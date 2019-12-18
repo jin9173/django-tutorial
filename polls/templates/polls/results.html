@@ -1,0 +1,16 @@
+<h1>{{ question.question_text }}</h1>
+
+<ul>
+    {% for choice in question.choice_set.all %}
+        <li>
+            <span>{{ choice.choice_text }}</span>
+            <strong>[ {{ choice.votes }}]</strong>
+        </li>
+    {% endfor %}
+</ul>
+
+<!-- 설문조사목록 (/polls/) 페이지로 돌아가기 링크 구현 -->
+<a href="{% url 'polls:index' %}">설문조사 목록으로 돌아가기</a><br>
+
+<!-- 다시 설문조사 하기 링크 구현 (/polls/<pk>/) -->
+<a href="{% url 'polls:detail' question_id=question.pk %}">다시 설문조가 하기</a>
